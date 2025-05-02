@@ -5,90 +5,84 @@
   <title>My Canva Style App</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      display: flex;
-      height: 100vh;
-      color: #333;
-    }
+  body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    height: 100vh;
+    color: #333;
+    background: #F6F9FC;
+  }
 
-    /* Sidebar trái */
-    .sidebar {
-      width: 220px;
-      background: #f4f4f4;
-      padding: 20px;
-      border-right: 1px solid #ddd;
-    }
+  .sidebar {
+    width: 220px;
+    background: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
 
-    .sidebar h2 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      color: #555;
-    }
+  .sidebar h2 {
+    color: #8C30F5;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 
-    .sidebar button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: none;
-      background: white;
-      border-radius: 6px;
-      cursor: pointer;
-      text-align: left;
-    }
+  .sidebar button {
+    background: #E6F6F7;
+    color: #00C4CC;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
 
-    .sidebar button:hover {
-      background: #e0e0e0;
-    }
+  .sidebar button:hover {
+    background: #d0f0f1;
+  }
 
-    /* Khu vực nội dung */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .topbar {
-      padding: 15px 20px;
-      background: white;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .topbar {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .content {
-      padding: 20px;
-      background: #fafafa;
-      flex: 1;
-      overflow-y: auto;
-    }
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8C30F5;
+  }
 
-    .logo {
-      font-weight: bold;
-      font-size: 18px;
-      color: #0073e6;
-    }
+  .search input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+  }
 
-    .search {
-      flex: 1;
-      margin: 0 20px;
-    }
-
-    .search input {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-  </style>
+  .content {
+    padding: 30px;
+    background: #F6F9FC;
+    flex: 1;
+    overflow-y: auto;
+  }
+</style>
 </head>
 <body>
   <div class="sidebar">
     <h2>📁 Menu</h2>
-    <button onclick="setContent('Trang chủ')">🏠 Trang chủ</button>
+    <button onclick="setContent('<a href="https://https://hoang96vn.github.io/hoang/index.html">trang chủ</a>')">🏠 Trang chủ</button>
     <button onclick="setContent('Hình của Anh')">🧔‍♂️ Hình của Anh</button>
     <button onclick="setContent('Hình của Em')">💃 Hình của Em</button>
     <button onclick="setContent('Năm 2025')">📆 2025</button>

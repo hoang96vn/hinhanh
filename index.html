@@ -14,7 +14,24 @@
   <div class="banner">
     Trang web riêng tư của Quốc Hoàng & Xuân Thy
   
-  <div class="cell">Nội dung số 1 nè</div>
+  <div class="cell"> <h1>XuânThy, em có yêu anh Hoàng đẹp trai không?</h1>
+  <button id="yes-btn">Có</button>
+  <button id="no-btn">Không</button>
+   <div id="hearts-container"></div>
+  <h2 id="final-text" style="display: none;">Anh biết mà, yêu em nhiều lắm!</h2>
+    <div id="popup-love" style="
+    display:none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: pink;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    animation: pop 0.5s ease-out;
+  ">💖 Anh yêu em 💖</div>
+  </div>
   <div class="cell">Nội dung số 1 nè</div>
   <div class="cell">Nội dung số 1 nè</div>
 </div> </div>
@@ -34,10 +51,82 @@
 
     <!-- Nội dung chính -->
     <div class="main-content">
+      <div id="navbar">
+  <button onclick="showSection('anh')">📷 Hình của Anh</button>
+  <button onclick="showSection('em')">💃 Hình của Em</button>
+  <button onclick="showSection('2025')">📆 2025</button>
+  <button onclick="showSection('chat')">💌 Góc Chát</button>
+</div>
+      <div id="section-anh" class="section" style="display:none;">Hình của Anh đây nè 😎</div>
+<div id="section-em" class="section" style="display:none;">Hình của Em dễ thương ghê 😘</div>
+<div id="section-2025" class="section" style="display:none;">Những khoảnh khắc 2025 ✨</div>
+<div id="section-chat" class="section" style="display:none;">Góc chát để nhắn gửi 💬</div>
       <h1>Chào mừng đến với trang web của tôi!</h1>
       <p>Đây là nội dung chính của trang.</p>
       <b>Nhắn lung tung gì đso thì nhắn ở đây thôi cũng dễ hiểu lắm em à, nói chớ cũng học nhiều mới biết được</b>
     </div>
+<script>
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
 
+    // Khi di chuột vào "Không" thì nó chạy loạn
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // Khi bấm "Có"
+    yesBtn.addEventListener("click", () => {
+      for (let i = 0; i < 10; i++) {
+        createHeart();
+      }
+
+      // Hiện chữ
+      document.getElementById("final-text").style.display = "block";
+
+      // Hiện popup
+      document.getElementById("popup-love").style.display = "block";
+
+      // Phát nhạc
+      document.getElementById("love-audio").play();
+
+      // Bắn confetti
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      // Làm mờ rồi ẩn nút "Không"
+      noBtn.style.opacity = "0";
+      setTimeout(() => noBtn.style.display = "none", 500);
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+      heart.innerHTML = `<img src="https://media.giphy.com/media/6Uqa3vLCikV1yNRmdU/giphy.gif" 
+                         alt="Anime boy blowing heart" 
+                         style="width:80px; height:auto;">`;
+
+      document.getElementById("hearts-container").appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    function showSection(name) {
+  // Ẩn tất cả các section
+  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+  // Hiện section được chọn
+  document.getElementById('section-' + name).style.display = 'block';
+}
+  </script>
 </body>
 </html>

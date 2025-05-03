@@ -18,7 +18,6 @@
   <button id="yes-btn">Có</button>
   <button id="no-btn">Không</button>
    <div id="hearts-container"></div>
-  <h2 id="final-text" style="display: none;">Anh biết mà, yêu em nhiều lắm!</h2>
     <div id="popup-love" style="
     display:none;
     position: fixed;
@@ -89,7 +88,8 @@
 
       // Hiện popup
       document.getElementById("popup-love").style.display = "block";
-
+setTimeout(() => { popup.style.display = "none";
+    }, 5000);} // 5 giây
       // Phát nhạc
       document.getElementById("love-audio").play();
 
@@ -111,7 +111,7 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
 
-      heart.innerHTML = `<img src="https://media.giphy.com/media/6Uqa3vLCikV1yNRmdU/giphy.gif" 
+      heart.innerHTML = `💖" 
                          alt="Anime boy blowing heart" 
                          style="width:80px; height:auto;">`;
 

@@ -14,13 +14,12 @@
   <div class="banner">
     Trang web riêng tư của Quốc Hoàng & Xuân Thy
   
-  <div class="cell"><p style="font-size: 15px;">XuânThy, em có yêu anh Hoàng đẹp trai không?</p>
+ <h2>Xuân Thy, em có yêu anh Hoàng đẹp trai không?</h2>
   <button id="yes-btn">Có</button>
   <button id="no-btn">Không</button>
-   <div id="hearts-container"></div>
-    <div id="popup-love">
-  💖 Anh yêu em 💖
-</div>
+
+  <div id="popup">💖 Anh yêu em 💖</div>
+  <div id="hearts-container"></div>
 
 <audio id="love-audio" src="your-music.mp3"></audio> <!-- Đổi thành file nhạc bạn có -->
   <div class="cell">Nội dung số 1 nè</div>
@@ -57,61 +56,48 @@
       <b>Nhắn lung tung gì đso thì nhắn ở đây thôi cũng dễ hiểu lắm em à, nói chớ cũng học nhiều mới biết được</b>
     </div>
 <script>
-   const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
-const popup = document.getElementById("popup-love");
+  const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+    const popup = document.getElementById("popup");
+    const heartContainer = document.getElementById("hearts-container");
 
-function showPopup() {
-  popup.style.display = "block";
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 5000);
-}
+    // Nút Không nhảy lung tung
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-  heart.innerHTML = "💖";
+    // Nút Có: Hiện popup và trái tim
+    yesBtn.addEventListener("click", () => {
+      popup.style.display = "block";
 
-  document.getElementById("hearts-container").appendChild(heart);
+      // Tự tắt popup sau 5 giây
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 5000);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
-}
+      // Tạo trái tim bay bay
+      for (let i = 0; i < 20; i++) {
+        createHeart();
+      }
+    });
 
-yesBtn.addEventListener("click", () => {
-  for (let i = 0; i < 10; i++) {
-    createHeart();
-  }
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = Math.random() * 100 + "vh";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      heartContainer.appendChild(heart);
 
-  showPopup(); // Hiện popup
-
-  document.getElementById("love-audio").play();
-
-  if (typeof confetti === "function") {
-    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
-  }
-
-  noBtn.style.opacity = "0";
-  setTimeout(() => noBtn.style.display = "none", 500);
-});
-
-// Khi di chuột vào "Không" thì chạy loạn
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
-  const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
-  noBtn.style.position = "absolute";
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
-});
-
-// Hiện popup ban đầu khi trang load
-window.onload = () => {
-  showPopup();
-};
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
   </script>
 </body>
 </html>

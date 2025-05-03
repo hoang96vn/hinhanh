@@ -18,19 +18,12 @@
   <button id="yes-btn">Có</button>
   <button id="no-btn">Không</button>
    <div id="hearts-container"></div>
-    <div id="popup-love" style="
-    display:none;
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: pink;
-    padding: 20px;
-    font-size: 24px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    animation: pop 0.5s ease-out;
-  ">💖 Anh yêu em 💖</div>
-  </div>
+    <div id="popup-love" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+background:pink; padding:20px; font-size:24px; border-radius:15px; box-shadow:0 0 20px rgba(0,0,0,0.2);">
+  💖 Anh yêu em 💖
+</div>
+
+<audio id="love-audio" src="your-music.mp3"></audio> <!-- Đổi thành file nhạc bạn có -->
   <div class="cell">Nội dung số 1 nè</div>
   <div class="cell">Nội dung số 1 nè</div>
 </div> </div>
@@ -65,80 +58,61 @@
       <b>Nhắn lung tung gì đso thì nhắn ở đây thôi cũng dễ hiểu lắm em à, nói chớ cũng học nhiều mới biết được</b>
     </div>
 <script>
-    const yesBtn = document.getElementById("yes-btn");
-    const noBtn = document.getElementById("no-btn");
+   const yesBtn = document.getElementById("yes-btn");
+const noBtn = document.getElementById("no-btn");
+const popup = document.getElementById("popup-love");
 
-    // Khi di chuột vào "Không" thì nó chạy loạn
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
-      noBtn.style.position = "absolute";
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    });
-
-    // Khi bấm "Có"
-    yesBtn.addEventListener("click", () => {
-      for (let i = 0; i < 10; i++) {
-        createHeart();
-      }
-
-      // Hiện chữ
-      document.getElementById("final-text").style.display = "block";
-
-      // Hiện popup
-      const popup = document.getElementById("popup");
-
-  function showPopup() {
-    popup.style.display = "block";
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 5000); // 5 giây
-  }
-
-  function showAgain() {
-    showPopup(); // hiện lại popup khi bấm "Yes"
-  }
-
-  // Hiện popup khi trang vừa load
-  window.onload = () => {
-    showPopup();
-  };
-      // Phát nhạc
-      document.getElementById("love-audio").play();
-
-      // Bắn confetti
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
-      });
-
-      // Làm mờ rồi ẩn nút "Không"
-      noBtn.style.opacity = "0";
-      setTimeout(() => noBtn.style.display = "none", 500);
-    });
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-
-      heart.innerHTML = 💖;
-
-      document.getElementById("hearts-container").appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
-    }
-    function showSection(name) {
-  // Ẩn tất cả các section
-  document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-  // Hiện section được chọn
-  document.getElementById('section-' + name).style.display = 'block';
+function showPopup() {
+  popup.style.display = "block";
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 5000);
 }
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+  heart.innerHTML = "💖";
+
+  document.getElementById("hearts-container").appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+yesBtn.addEventListener("click", () => {
+  for (let i = 0; i < 10; i++) {
+    createHeart();
+  }
+
+  showPopup(); // Hiện popup
+
+  document.getElementById("love-audio").play();
+
+  if (typeof confetti === "function") {
+    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+  }
+
+  noBtn.style.opacity = "0";
+  setTimeout(() => noBtn.style.display = "none", 500);
+});
+
+// Khi di chuột vào "Không" thì chạy loạn
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+});
+
+// Hiện popup ban đầu khi trang load
+window.onload = () => {
+  showPopup();
+};
   </script>
 </body>
 </html>

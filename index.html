@@ -68,83 +68,88 @@
     </div>
 <script>
   const yesBtn = document.getElementById("yes-btn");
-    const noBtn = document.getElementById("no-btn");
-    const popup = document.getElementById("popup");
-    const heartContainer = document.getElementById("hearts-container");
+  const noBtn = document.getElementById("no-btn");
+  const popup = document.getElementById("popup");
+  const heartContainer = document.getElementById("hearts-container");
 
-    // Nút Không nhảy lung tung
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-      noBtn.style.position = "absolute";
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    });
+  // Nút Không nhảy lung tung
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  });
 
-    // Nút Có: Hiện popup và trái tim
-    yesBtn.addEventListener("click", () => {
-      popup.style.display = "block";
+  // Nút Có: Hiện popup và trái tim
+  yesBtn.addEventListener("click", () => {
+    popup.style.display = "block";
 
-      // Tự tắt popup sau 5 giây
-      setTimeout(() => {
-        popup.style.display = "none";
-      }, 5000);
+    // Tự tắt popup sau 5 giây
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 5000);
 
-      // Tạo trái tim bay bay
-      for (let i = 0; i < 20; i++) {
-        createHeart();
-      }
-    });
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.top = Math.random() * 100 + "vh";
-      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-      heartContainer.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+    // Tạo trái tim bay bay
+    for (let i = 0; i < 20; i++) {
+      createHeart();
     }
- const imagePopup = document.getElementById("image-popup");
-const popupImg = document.getElementById("popup-img");
+  });
 
-function showImage(src) {
-  popupImg.src = src;
-  imagePopup.style.display = "block";
-  setTimeout(() => {
-    imagePopup.style.display = "none";
-  }, 5000);
-}
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = Math.random() * 100 + "vh";
+    heart.style.position = "absolute";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    heartContainer.appendChild(heart);
 
-document.getElementById("btn-em").addEventListener("mouseenter", () => {
-  showImage(
-    "https://hoang96vn.github.io/hoang/em1.jpg",
-    "https://hoang96vn.github.io/hoang/em2.jpg",
-    "https://hoang96vn.github.io/hoang/em3.jpg"
-  );
-});
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
 
-// Gán cho nút Anh
-document.getElementById("btn-anh").addEventListener("mouseenter", () => {
-  showImage(
-    "https://hoang96vn.github.io/hoang/anh1.jpg",
-    "https://hoang96vn.github.io/hoang/anh2.jpg",
-    "https://hoang96vn.github.io/hoang/anh3.jpg"
-  );
-});
+  // --- Hiện ảnh popup ---
+  const imagePopup = document.getElementById("image-popup");
+  const popupImg = document.getElementById("popup-img");
 
-// Gán cho nút Chung
-document.getElementById("btn-chung").addEventListener("mouseenter", () => {
-  showImage(
-    "https://hoang96vn.github.io/hoang/chung1.jpg",
-    "https://hoang96vn.github.io/hoang/chung2.jpg",
-    "https://hoang96vn.github.io/hoang/chung3.jpg"
-  );
-});
-  </script>
+  function showImage(...srcList) {
+    const randomSrc = srcList[Math.floor(Math.random() * srcList.length)];
+    popupImg.src = randomSrc;
+    imagePopup.style.display = "block";
+    setTimeout(() => {
+      imagePopup.style.display = "none";
+    }, 5000);
+  }
+
+  // Gán cho nút Em
+  document.getElementById("btn-em").addEventListener("mouseenter", () => {
+    showImage(
+      "https://hoang96vn.github.io/hoang/em1.jpg",
+      "https://hoang96vn.github.io/hoang/em2.jpg",
+      "https://hoang96vn.github.io/hoang/em3.jpg"
+    );
+  });
+
+  // Gán cho nút Anh
+  document.getElementById("btn-anh").addEventListener("mouseenter", () => {
+    showImage(
+      "https://hoang96vn.github.io/hoang/anh1.jpg",
+      "https://hoang96vn.github.io/hoang/anh2.jpg",
+      "https://hoang96vn.github.io/hoang/anh3.jpg"
+    );
+  });
+
+  // Gán cho nút Chung
+  document.getElementById("btn-chung").addEventListener("mouseenter", () => {
+    showImage(
+      "https://hoang96vn.github.io/hoang/chung1.jpg",
+      "https://hoang96vn.github.io/hoang/chung2.jpg",
+      "https://hoang96vn.github.io/hoang/chung3.jpg"
+    );
+  });
+</script>
 </body>
 </html>

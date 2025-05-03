@@ -60,7 +60,7 @@
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
 ">
-  <img id="popup-img" src="" alt="Ảnh popup" style="max-width: 90vw; max-height: 80vh;" />
+  <img id="popup-img" src="" alt="Ảnh popup" style="max-width: 400vw; max-height: 500vh;" />
 </div>
       <h1>Chào mừng đến với trang web của tôi!</h1>
       <p>Đây là nội dung chính của trang.</p>
@@ -109,16 +109,16 @@
         heart.remove();
       }, 5000);
     }
-  const popup = document.getElementById("image-popup");
-  const popupImg = document.getElementById("popup-img");
+ const imagePopup = document.getElementById("image-popup");
+const popupImg = document.getElementById("popup-img");
 
-  function showImage(src) {
-    popupImg.src = src;
-    popup.style.display = "block";
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 5000); // 5 giây sau sẽ ẩn
-  }
+function showImage(src) {
+  popupImg.src = src;
+  imagePopup.style.display = "block";
+  setTimeout(() => {
+    imagePopup.style.display = "none";
+  }, 5000);
+}
 
   // Gán cho nút Em
   document.getElementById("btn-em").addEventListener("mouseenter", () => {

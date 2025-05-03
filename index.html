@@ -22,8 +22,11 @@
   <div id="hearts-container"></div>
 
 <audio id="love-audio" src="your-music.mp3"></audio> <!-- Đổi thành file nhạc bạn có -->
-  <div class="cell">Nội dung số 1 nè</div>
-  <div class="cell">Nội dung số 1 nè</div>
+  <div class="cell"><div class="marquee-container">
+  <div class="marquee-text">💖 Anh yêu em nhiều lắm Thy ơi 💖</div>
+</div>
+</div>
+
 </div> </div>
   <!-- Header -->
 
@@ -150,6 +153,26 @@
       "https://hoang96vn.github.io/hoang/chung3.jpg"
     );
   });
+  .marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 10s linear infinite;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: deeppink;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 </script>
 </body>
 </html>

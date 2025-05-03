@@ -120,19 +120,31 @@ function showImage(src) {
   }, 5000);
 }
 
-  // Gán cho nút Em
-  document.getElementById("btn-em").addEventListener("mouseenter", () => {
-    showImage("https://hoang96vn.github.io/hoang/em1.jpg","https://hoang96vn.github.io/hoang/em2.jpg","https://hoang96vn.github.io/hoang/em3.jpg); // đổi đúng đường ảnh của bạn
-  });
+document.getElementById("btn-em").addEventListener("mouseenter", () => {
+  showImage(
+    "https://hoang96vn.github.io/hoang/em1.jpg",
+    "https://hoang96vn.github.io/hoang/em2.jpg",
+    "https://hoang96vn.github.io/hoang/em3.jpg"
+  );
+});
 
-  // Gán cho nút Anh
-  document.getElementById("btn-anh").addEventListener("mouseenter", () => {
-    showImage("https://hoang96vn.github.io/hoang/anh1.jpg","https://hoang96vn.github.io/hoang/anh2.jpg","https://hoang96vn.github.io/hoang/anh3.jpg"); // đổi đúng đường ảnh
-  });
-   // Gán cho nút Anh
-  document.getElementById("btn-chung").addEventListener("mouseenter", () => {
-    showImage("https://hoang96vn.github.io/hoang/chung1.jpg","https://hoang96vn.github.io/hoang/chung2.jpg","https://hoang96vn.github.io/hoang/chung3.jpg); // đổi đúng đường ảnh
-  });
+// Gán cho nút Anh
+document.getElementById("btn-anh").addEventListener("mouseenter", () => {
+  showImage(
+    "https://hoang96vn.github.io/hoang/anh1.jpg",
+    "https://hoang96vn.github.io/hoang/anh2.jpg",
+    "https://hoang96vn.github.io/hoang/anh3.jpg"
+  );
+});
+
+// Gán cho nút Chung
+document.getElementById("btn-chung").addEventListener("mouseenter", () => {
+  showImage(
+    "https://hoang96vn.github.io/hoang/chung1.jpg",
+    "https://hoang96vn.github.io/hoang/chung2.jpg",
+    "https://hoang96vn.github.io/hoang/chung3.jpg"
+  );
+});
   </script>
 </body>
 </html>

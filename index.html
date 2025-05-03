@@ -42,15 +42,26 @@
     <!-- Nội dung chính -->
     <div class="main-content">
       <div id="navbar">
-  <button onclick="showSection('anh')">📷 Hình của Anh</button>
-  <button onclick="showSection('em')">💃 Hình của Em</button>
-  <button onclick="showSection('2025')">📆 2025</button>
-  <button onclick="showSection('chat')">💌 Góc Chát</button>
+ <button id="btn-em">Hình của Em</button>
+<button id="btn-anh">Hình của Anh</button>
+       <button id="btn-chung">image chung</button> 
+
+<!-- Ảnh popup -->
+<div id="image-popup" style="
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  padding: 10px;
+  border: 3px solid pink;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+">
+  <img id="popup-img" src="" alt="Ảnh popup" style="max-width: 90vw; max-height: 80vh;" />
 </div>
-      <div id="section-anh" class="section" style="display:none;">Hình của Anh đây nè 😎</div>
-<div id="section-em" class="section" style="display:none;">Hình của Em dễ thương ghê 😘</div>
-<div id="section-2025" class="section" style="display:none;">Những khoảnh khắc 2025 ✨</div>
-<div id="section-chat" class="section" style="display:none;">Góc chát để nhắn gửi 💬</div>
       <h1>Chào mừng đến với trang web của tôi!</h1>
       <p>Đây là nội dung chính của trang.</p>
       <b>Nhắn lung tung gì đso thì nhắn ở đây thôi cũng dễ hiểu lắm em à, nói chớ cũng học nhiều mới biết được</b>
@@ -98,6 +109,30 @@
         heart.remove();
       }, 5000);
     }
+  const popup = document.getElementById("image-popup");
+  const popupImg = document.getElementById("popup-img");
+
+  function showImage(src) {
+    popupImg.src = src;
+    popup.style.display = "block";
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 5000); // 5 giây sau sẽ ẩn
+  }
+
+  // Gán cho nút Em
+  document.getElementById("btn-em").addEventListener("mouseenter", () => {
+    showImage("https://hoang96vn.github.io/anhcuaanh.jpg"); // đổi đúng đường ảnh của bạn
+  });
+
+  // Gán cho nút Anh
+  document.getElementById("btn-anh").addEventListener("mouseenter", () => {
+    showImage("https://hoang96vn.github.io/anhcuaem.jpg"); // đổi đúng đường ảnh
+  });
+   // Gán cho nút Anh
+  document.getElementById("btn-chung").addEventListener("mouseenter", () => {
+    showImage("https://hoang96vn.github.io/chung"); // đổi đúng đường ảnh
+  });
   </script>
 </body>
 </html>

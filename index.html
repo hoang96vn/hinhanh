@@ -87,9 +87,23 @@
       document.getElementById("final-text").style.display = "block";
 
       // Hiện popup
-      document.getElementById("popup-love").style.display = "block";
-setTimeout(() => { popup.style.display = "none";
-    }, 5000);} // 5 giây
+      const popup = document.getElementById("popup");
+
+  function showPopup() {
+    popup.style.display = "block";
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 5000); // 5 giây
+  }
+
+  function showAgain() {
+    showPopup(); // hiện lại popup khi bấm "Yes"
+  }
+
+  // Hiện popup khi trang vừa load
+  window.onload = () => {
+    showPopup();
+  };
       // Phát nhạc
       document.getElementById("love-audio").play();
 
